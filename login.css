@@ -1,0 +1,78 @@
+/* New and improved styles/login.css */
+:root {
+    --primary-green: #27ae60;
+    --primary-blue: #2980b9;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --transition: all 0.3s ease;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; color: var(--text-dark); overflow-x: hidden; }
+
+.login-container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #27ae60, #2980b9, #3498db);
+    background-size: 300% 300%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+}
+@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.floating-icon { position: absolute; font-size: 2rem; color: rgba(255, 255, 255, 0.15); animation: float 20s infinite ease-in-out; }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(15deg); } }
+
+.navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; z-index: 100; }
+.logo { font-size: 1.8rem; font-weight: 700; color: var(--white); text-decoration: none; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-link { text-decoration: none; color: var(--white); font-weight: 500; transition: var(--transition); position: relative; }
+.nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background-color: var(--white); transition: var(--transition); }
+.nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+.form-container {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 420px;
+    z-index: 10;
+}
+.form-container h2 { text-align: center; margin-bottom: 2rem; color: var(--primary-green); font-weight: 700; }
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-dark); }
+.form-group input { width: 100%; padding: 0.85rem 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; transition: var(--transition); background-color: rgba(255, 255, 255, 0.5); }
+.form-group input:focus { outline: none; border-color: var(--primary-blue); box-shadow: 0 0 0 4px rgba(41, 128, 185, 0.2); }
+
+.password-container { position: relative; }
+.password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-light); cursor: pointer; font-size: 1.1rem; }
+
+.btn { display: inline-block; padding: 0.85rem 1.5rem; background: linear-gradient(135deg, var(--primary-green), var(--primary-blue)); color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--transition); width: 100%; margin-bottom: 1rem; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); filter: brightness(1.1); }
+.btn-outline { background: transparent; border: none; color: var(--primary-blue); font-weight: 500; padding: 0; margin-top: 1rem; text-decoration: underline; }
+
+.register-step { display: none; }
+.register-step.active { display: block; }
+.user-type-selection p { color: var(--text-light); margin-bottom: 2rem; text-align: center; }
+.user-type-buttons { display: flex; flex-direction: column; gap: 1rem; }
+
+/* Styles for Password Validation */
+.password-feedback ul { list-style: none; padding-left: 0; margin-top: 10px; font-size: 0.8rem; }
+.password-feedback li { display: flex; align-items: center; margin-bottom: 5px; color: #e74c3c; transition: color 0.3s ease; }
+.password-feedback li.valid { color: var(--primary-green); }
+.password-feedback li i { margin-right: 8px; }
+
+/* Styles for OTP Boxes */
+.otp-container { display: flex; justify-content: space-between; gap: 10px; }
+.otp-input { width: 45px; height: 50px; text-align: center; font-size: 1.5rem; font-weight: 600; border: 1px solid #ddd; border-radius: 8px; background-color: rgba(255, 255, 255, 0.5); transition: var(--transition); }
+.otp-input:focus { outline: none; border-color: var(--primary-green); box-shadow: 0 0 0 4px rgba(39, 174, 96, 0.2); }

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard | Eco-Cycle Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!-- Customer Dashboard -->
+    <div class="dashboard" id="customerDashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">Eco-Cycle Hub</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span class="user-greeting">Welcome, <span id="userName">User</span>!</span>
+                <span class="user-type-badge" id="userTypeBadge">Customer</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <a href="#" class="nav-item active" data-section="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item" data-section="calculator">
+                <i class="fas fa-calculator"></i>
+                <span>Waste Calculator</span>
+            </a>
+            <a href="#" class="nav-item" data-section="records">
+                <i class="fas fa-history"></i>
+                <span>Past Records</span>
+            </a>
+            <a href="#" class="nav-item" data-section="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="#" class="nav-item" data-section="settings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Home Section -->
+            <section class="dashboard-section active" id="home">
+                <h2 style="margin-bottom: 1.5rem;">Dashboard Overview</h2>
+                
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="stat-value" data-target="42">0</div>
+                        <div class="stat-label">Total Recycled (kg)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-value" data-target="1250">0</div>
+                        <div class="stat-label">Rewards Earned (₹)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-value" data-target="18">0</div>
+                        <div class="stat-label">Collections Made</div>
+                    </div>
+                </div>
+
+                <!-- Recent Records -->
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Recent Recycling Records</h3>
+                    </div>
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type of Waste</th>
+                                <th>Weight (kg)</th>
+                                <th>Status</th>
+                                <th>Rewards (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023-10-15</td>
+                                <td>Plastic</td>
+                                <td>5.2</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-12</td>
+                                <td>Paper</td>
+                                <td>3.8</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>95</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-10</td>
+                                <td>Electronic</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>210</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <div class="contact-header">
+                        <h3>Contact Us</h3>
+                        <p style="color: var(--text-light);">If you face any problem, please reach out to us</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>support@ecocyclehub.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Address</h4>
+                                <p>123 Green Street, Eco City, Bangalore 560001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Working Hours</h4>
+                                <p>Mon-Fri: 9AM-6PM, Sat: 10AM-4PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Waste Calculator Section -->
+            <section class="dashboard-section" id="calculator">
+                <h2 style="margin-bottom: 1.5rem;">Waste Value Calculator</h2>
+                
+                <div class="waste-calculator-container">
+                    <div class="waste-calculator-header">
+                        <h3>Select Waste Types</h3>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">Choose the types of waste you want to recycle and enter quantities</p>
+                    </div>
+                    
+                    <div class="waste-types-grid" id="wasteTypesGrid">
+                        <!-- Waste type cards will be dynamically generated here -->
+                    </div>
+                    
+                    <div class="waste-calculator-summary">
+                        <div class="summary-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotalValue">₹0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Pickup Fee:</span>
+                            <span id="pickupFee">₹30.00</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Value:</span>
+                            <span id="totalValue">₹0.00</span>
+                        </div>
+                        
+                        <div class="pickup-requirement not-met" id="pickupRequirement">
+                            <i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>
+                            Minimum pickup amount: ₹120.00 (Current: ₹0.00)
+                        </div>
+                        
+                        <button class="btn schedule-pickup-btn" id="schedulePickupBtn" disabled>
+                            Schedule Pickup
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Past Records Section -->
+            <section class="dashboard-section" id="records">
+                <h2 style="margin-bottom: 1.5rem;">All Recycling Records</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Complete History</h3>
+                    </div>
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type of Waste</th>
+                                <th>Weight (kg)</th>
+                                <th>Status</th>
+                                <th>Rewards (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-history-table-body">
+                            <tr>
+                                <td>2023-10-15</td>
+                                <td>Plastic</td>
+                                <td>5.2</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>150</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-12</td>
+                                <td>Paper</td>
+                                <td>3.8</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>95</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-10</td>
+                                <td>Electronic</td>
+                                <td>2.1</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>210</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-05</td>
+                                <td>Glass</td>
+                                <td>4.5</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>135</td>
+                            </tr>
+                            <tr>
+                                <td>2023-10-01</td>
+                                <td>Metal</td>
+                                <td>6.3</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>189</td>
+                            </tr>
+                            <tr>
+                                <td>2023-09-28</td>
+                                <td>Plastic</td>
+                                <td>3.7</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>111</td>
+                            </tr>
+                            <tr>
+                                <td>2023-09-25</td>
+                                <td>Paper</td>
+                                <td>5.1</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>127</td>
+                            </tr>
+                            <tr>
+                                <td>2023-09-20</td>
+                                <td>Electronic</td>
+                                <td>1.8</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>180</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section class="dashboard-section" id="profile">
+                <h2 style="margin-bottom: 1.5rem;">User Profile</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Personal Information</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--primary-green); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; margin-right: 1.5rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <h3 id="profileUserName">User Name</h3>
+                                <p style="color: var(--text-light);" id="profileUserEmail">user@example.com</p>
+                                <p style="color: var(--text-light);">Member since: Jan 2023</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <div class="address-container">
+                                    <div>
+                                        <h4 style="margin-bottom: 0.5rem;">Address</h4>
+                                        <div class="address-display" id="addressDisplay">123 Green Street, Eco City, 12345</div>
+                                        <div class="address-input" id="addressInput">
+                                            <input type="text" class="form-group input" id="addressFieldValue" value="123 Green Street, Eco City, 12345" style="margin-bottom: 0;">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-small btn-outline" id="editAddressBtn">Edit</button>
+                                        <button class="btn btn-small" id="saveAddressBtn" style="display: none;">Save</button>
+                                        <button class="btn btn-small btn-outline" id="cancelAddressBtn" style="display: none;">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">Phone</h4>
+                                <p id="profileUserPhone">+91 (555) 123-4567</p>
+                            </div>
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">Member Level</h4>
+                                <p style="color: var(--primary-green); font-weight: 600;">Gold Member</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="dashboard-section" id="settings">
+                <h2 style="margin-bottom: 1.5rem;">Settings</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Account Settings</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <form class="settings-form" id="customerSettingsForm">
+                            <div class="form-group">
+                                <label for="customerSettingsEmail">Email Address</label>
+                                <input type="email" id="customerSettingsEmail" value="customer@example.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerSettingsCurrentPassword">Current Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="customerSettingsCurrentPassword" placeholder="Enter current password">
+                                    <button type="button" class="password-toggle" data-target="customerSettingsCurrentPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerSettingsNewPassword">New Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="customerSettingsNewPassword" placeholder="Enter new password">
+                                    <button type="button" class="password-toggle" data-target="customerSettingsNewPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="customerSettingsConfirmPassword">Confirm New Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="customerSettingsConfirmPassword" placeholder="Confirm new password">
+                                    <button type="button" class="password-toggle" data-target="customerSettingsConfirmPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn">Save Changes</button>
+                                <button type="button" class="btn btn-secondary" id="customerCancelSettingsBtn">Cancel</button>
+                            </div>
+                        </form>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 1rem;">Notification Settings</h4>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #eee;">
+                                <span>Email Notifications</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="customerEmailNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #eee;">
+                                <span>SMS Notifications</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="customerSmsNotifications">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Action completed successfully!</span>
+    </div>
+
+    <script src="scripts/customer-dashboard.js"></script>
+</body>
+</html>

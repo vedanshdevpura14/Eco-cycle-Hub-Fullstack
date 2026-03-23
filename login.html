@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Eco-Cycle Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <i class="floating-icon fas fa-recycle" style="top: 10%; left: 10%; animation-delay: 0s;"></i>
+        <i class="floating-icon fas fa-leaf" style="top: 20%; left: 80%; animation-delay: 2s;"></i>
+        <i class="floating-icon fas fa-seedling" style="top: 70%; left: 15%; animation-delay: 5s;"></i>
+        <i class="floating-icon fas fa-tree" style="top: 60%; left: 85%; animation-delay: 7s;"></i>
+        
+        <nav class="navbar">
+            <a href="index.html" class="logo">Eco-Cycle Hub</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="login.html" class="nav-link active">Login</a>
+            </div>
+        </nav>
+        
+        <div class="form-container user-type-selection" id="userTypeSelection">
+            <h2>Welcome to Eco-Cycle Hub</h2>
+            <p>Select your user type to continue</p>
+            <div class="user-type-buttons">
+                <button class="btn user-type-btn" id="customerBtn">
+                    <i class="fas fa-user"></i>
+                    <span>Customer</span>
+                </button>
+                <button class="btn user-type-btn" id="collectorBtn">
+                    <i class="fas fa-truck"></i>
+                    <span>Collector</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="form-container" id="customerLoginContainer" style="display: none;">
+            <h2>Customer Login</h2>
+            <form id="customerLoginForm">
+                <div class="form-group">
+                    <label for="customerEmail">Email / Username</label>
+                    <input type="text" id="customerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPassword">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="customerPassword" name="password" required>
+                        <button type="button" class="password-toggle" data-target="customerPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn-outline" id="showCustomerRegisterBtn">Create New Account</button>
+                <button type="button" class="btn-outline" id="backToUserTypeBtn1">Back</button>
+            </form>
+        </div>
+        
+        <div class="form-container" id="customerRegisterContainer" style="display: none;">
+            <h2>Customer Registration</h2>
+            <form id="customerRegisterForm">
+                <div class="register-step active" id="customerRegisterStep1">
+                    <div class="form-group">
+                        <label for="customerRegUsername">Username</label>
+                        <input type="text" id="customerRegUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerRegMobile">Mobile Number</label>
+                        <input type="tel" id="customerRegMobile" pattern="[0-9]{10}" required>
+                    </div>
+                    <button type="button" class="btn" id="sendCustomerOtpBtn">Send OTP</button>
+                    <button type="button" class="btn-outline" id="backToCustomerLoginBtn">Back to Login</button>
+                </div>
+                <div class="register-step" id="customerRegisterStep2">
+                     <div class="form-group">
+                        <label>Enter OTP Sent to Your Mobile</label>
+                        <div class="otp-container" id="customerOtpContainer">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                        </div>
+                    </div>
+                    <button type="button" class="btn" id="verifyCustomerOtpBtn">Verify OTP</button>
+                </div>
+                <div class="register-step" id="customerRegisterStep3">
+                    <div class="form-group">
+                        <label for="customerRegPassword">Create Password</label>
+                        <input type="password" id="customerRegPassword" required>
+                        <div class="password-feedback" id="customerPasswordFeedback">
+                                <ul>
+                                    <li id="length"><i class="fas fa-times-circle"></i> At least 8 characters</li>
+                                    <li id="uppercase"><i class="fas fa-times-circle"></i> At least one uppercase letter</li>
+                                    <li id="lowercase"><i class="fas fa-times-circle"></i> At least one lowercase letter</li>
+                                    <li id="number"><i class="fas fa-times-circle"></i> At least one number</li>
+                                </ul>
+                       </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerRegConfirmPassword">Confirm Password</label>
+                        <input type="password" id="customerRegConfirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="form-container" id="collectorLoginContainer" style="display: none;">
+            <h2>Collector Login</h2>
+            <form id="collectorLoginForm">
+                <div class="form-group">
+                    <label for="collectorEmail">Email / Username</label>
+                    <input type="text" id="collectorEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="collectorPassword">Password</label>
+                    <div class="password-container">
+                        <input type="password" id="collectorPassword" name="password" required>
+                        <div class="password-feedback" id="customerPasswordFeedback">
+                            <ul>
+                                <li id="length"><i class="fas fa-times-circle"></i> At least 8 characters</li>
+                                <li id="uppercase"><i class="fas fa-times-circle"></i> At least one uppercase letter</li>
+                                <li id="lowercase"><i class="fas fa-times-circle"></i> At least one lowercase letter</li>
+                                <li id="number"><i class="fas fa-times-circle"></i> At least one number</li>
+                            </ul>
+                        </div>
+                        <button type="button" class="password-toggle" data-target="collectorPassword">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn-outline" id="showCollectorRegisterBtn">Create New Account</button>
+                <button type="button" class="btn-outline" id="backToUserTypeBtn2">Back</button>
+            </form>
+        </div>
+        
+        <div class="form-container" id="collectorRegisterContainer" style="display: none;">
+            <h2>Collector Registration</h2>
+            <form id="collectorRegisterForm">
+                 <div class="register-step active" id="collectorRegisterStep1">
+                    <div class="form-group">
+                        <label for="collectorRegUsername">Username</label>
+                        <input type="text" id="collectorRegUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="collectorRegMobile">Mobile Number</label>
+                        <input type="tel" id="collectorRegMobile" pattern="[0-9]{10}" required>
+                    </div>
+                    <button type="button" class="btn" id="sendCollectorOtpBtn">Send OTP</button>
+                    <button type="button" class="btn-outline" id="backToCollectorLoginBtn">Back to Login</button>
+                </div>
+                 <div class="register-step" id="collectorRegisterStep2">
+                     <div class="form-group">
+                        <label>Enter OTP Sent to Your Mobile</label>
+                         <div class="otp-container" id="customerOtpContainer">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                            <input type="text" class="otp-input" maxlength="1">
+                        </div>
+                    </div>
+                    <button type="button" class="btn" id="verifyCollectorOtpBtn">Verify OTP</button>
+                </div>
+                <div class="register-step" id="collectorRegisterStep3">
+                    <div class="form-group">
+                        <label for="collectorRegPassword">Create Password</label>
+                        <input type="password" id="collectorRegPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="collectorRegConfirmPassword">Confirm Password</label>
+                        <input type="password" id="collectorRegConfirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    <script src="scripts/login.js"></script>
+</body>
+</html>

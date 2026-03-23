@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collector Dashboard | Eco-Cycle Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <!-- Collector Dashboard -->
+    <div class="dashboard" id="collectorDashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <a href="index.html" class="logo">Eco-Cycle Hub</a>
+                <button class="menu-toggle" id="collectorMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div>
+                <button class="theme-toggle" id="collectorThemeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <span class="user-greeting">Welcome, <span id="collectorUserName">User</span>!</span>
+                <span class="user-type-badge" id="collectorUserTypeBadge">Collector</span>
+                <a href="index.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar" id="collectorSidebar">
+            <a href="#" class="nav-item active" data-section="collectorHome">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorPickups">
+                <i class="fas fa-calendar-alt"></i>
+                <span>My Pickups</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorAddresses">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>My Addresses</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorFare">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Fare Calculator</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorTime">
+                <i class="fas fa-clock"></i>
+                <span>Time Estimation</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorProfile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="#" class="nav-item" data-section="collectorSettings">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </nav>  
+
+        <!-- Main Content -->
+        <main class="main-content" id="collectorMainContent">
+            <!-- Collector Home Section -->
+            <section class="dashboard-section active" id="collectorHome">
+                <h2 style="margin-bottom: 1.5rem;">Collector Dashboard</h2>
+                
+                <!-- Collector Profile Card -->
+                <div class="collector-profile-card">
+                    <div class="collector-avatar">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="collector-info">
+                        <h3 id="collectorProfileName">Collector Name</h3>
+                        <p id="collectorProfileEmail">collector@example.com</p>
+                        <p id="collectorProfilePhone">+91 98xxxxxxxx</p>
+                        <div class="collector-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span>4.5 (128 reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="stat-value" data-target="248">0</div>
+                        <div class="stat-label">Total Collected (kg)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-value" data-target="8750">0</div>
+                        <div class="stat-label">Total Earnings (₹)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-value" data-target="64">0</div>
+                        <div class="stat-label">Pickups Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="stat-value" data-target="5">0</div>
+                        <div class="stat-label">Today's Pickups</div>
+                    </div>
+                </div>
+
+                <!-- Today's Pickups -->
+                <div class="records-container">
+                    <div class="records-container" style="margin-top: 2rem;">
+                            <div class="records-header">
+                            <h3>My Active Pickups</h3>
+                            </div>
+                        <div class="addresses-grid" id="active-pickups-grid">
+                    <p style="padding: 1.5rem;">Loading active pickups...</p>
+                        </div>
+                    </div>
+                    <div class="records-header">
+                        <h3>Today's Pickups</h3>
+                    </div>
+                    <div class="addresses-grid">
+                        <div class="address-card pickup-card">
+                            <div class="pickup-header">
+                                <div class="pickup-id">#PCK-2023-1056</div>
+                                <div class="pickup-time">10:30 AM</div>
+                            </div>
+                            <div class="pickup-details">
+                                <p><i class="fas fa-user"></i> <strong>Customer:</strong> Rajesh Kumar</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 45 Park Avenue, Green Hills</p>
+                                <p><i class="fas fa-weight"></i> <strong>Weight:</strong> 8.5 kg</p>
+                                <p><i class="fas fa-boxes"></i> <strong>Type:</strong> Plastic, Paper</p>
+                            </div>
+                            <div class="pickup-amount">Estimated Fare: ₹180</div>
+                            <div class="address-actions">
+                                <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1056">View Details</button>
+                                <button class="btn btn-small btn-danger cancel-pickup-btn" data-pickup-id="PCK-2023-1056">Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="address-card pickup-card">
+                            <div class="pickup-header">
+                                <div class="pickup-id">#PCK-2023-1057</div>
+                                <div class="pickup-time">2:15 PM</div>
+                            </div>
+                            <div class="pickup-details">
+                                <p><i class="fas fa-user"></i> <strong>Customer:</strong> Priya Sharma</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 21 Lake View, Eco City</p>
+                                <p><i class="fas fa-weight"></i> <strong>Weight:</strong> 5.2 kg</p>
+                                <p><i class="fas fa-boxes"></i> <strong>Type:</strong> Electronic, Glass</p>
+                            </div>
+                            <div class="pickup-amount">Estimated Fare: ₹210</div>
+                            <div class="address-actions">
+                                <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1057">View Details</button>
+                                <button class="btn btn-small btn-danger cancel-pickup-btn" data-pickup-id="PCK-2023-1057">Cancel</button>
+                            </div>
+                        </div>
+                        
+                        <div class="address-card pickup-card cancelled">
+                            <div class="pickup-header">
+                                <div class="pickup-id">#PCK-2023-1058</div>
+                                <div class="pickup-time">4:45 PM</div>
+                            </div>
+                            <div class="pickup-details">
+                                <p><i class="fas fa-user"></i> <strong>Customer:</strong> Amit Patel</p>
+                                <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> 78 Market Street, Downtown</p>
+                                <p><i class="fas fa-weight"></i> <strong>Weight:</strong> 6.8 kg</p>
+                                <p><i class="fas fa-boxes"></i> <strong>Type:</strong> Metal, Cardboard</p>
+                            </div>
+                            <div class="pickup-amount">Estimated Fare: ₹195</div>
+                            <div class="cancellation-reason">
+                                <strong>Cancelled:</strong> Vehicle breakdown
+                            </div>
+                            <div class="address-actions">
+                                <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1058">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="contact-section">
+                    <div class="contact-header">
+                        <h3>Contact Us</h3>
+                        <p style="color: var(--text-light);">If you face any problem, please reach out to us</p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Collector Support</h4>
+                                <p>+91 98765 43211</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>collectors@ecocyclehub.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Office Address</h4>
+                                <p>JAIPUR,RAJASHTAN</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Support Hours</h4>
+                                <p>24/7 Emergency Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collector Pickups Section -->
+            <section class="dashboard-section" id="collectorPickups">
+                <h2 style="margin-bottom: 1.5rem;">All Pickups</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Pickup History</h3>
+                    </div>
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>Pickup ID</th>
+                                <th>Date & Time</th>
+                                <th>Customer</th>
+                                <th>Address</th>
+                                <th>Weight (kg)</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Fare (₹)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pickup-history-table-body">
+                            <tr>
+                                <td>#PCK-2023-1056</td>
+                                <td>Today, 10:30 AM</td>
+                                <td>Rajesh Kumar</td>
+                                <td>45 Park Avenue</td>
+                                <td>8.5</td>
+                                <td>Plastic, Paper</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>180</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1056">View</button>
+                                    <button class="btn btn-small btn-danger cancel-pickup-btn" data-pickup-id="PCK-2023-1056">Cancel</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PCK-2023-1057</td>
+                                <td>Today, 2:15 PM</td>
+                                <td>Priya Sharma</td>
+                                <td>21 Lake View</td>
+                                <td>5.2</td>
+                                <td>Electronic, Glass</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>210</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1057">View</button>
+                                    <button class="btn btn-small btn-danger cancel-pickup-btn" data-pickup-id="PCK-2023-1057">Cancel</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PCK-2023-1058</td>
+                                <td>Today, 4:45 PM</td>
+                                <td>Amit Patel</td>
+                                <td>78 Market Street</td>
+                                <td>6.8</td>
+                                <td>Metal, Cardboard</td>
+                                <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                <td>195</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1058">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PCK-2023-1055</td>
+                                <td>Oct 15, 3:30 PM</td>
+                                <td>Suresh Reddy</td>
+                                <td>9 Hill Road</td>
+                                <td>7.2</td>
+                                <td>Plastic, Glass</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>200</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1055">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PCK-2023-1054</td>
+                                <td>Oct 14, 11:00 AM</td>
+                                <td>Anita Desai</td>
+                                <td>56 Beach Road</td>
+                                <td>4.8</td>
+                                <td>Paper, Textiles</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>145</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1054">View</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#PCK-2023-1053</td>
+                                <td>Oct 13, 2:45 PM</td>
+                                <td>Rahul Verma</td>
+                                <td>33 City Center</td>
+                                <td>9.5</td>
+                                <td>Metal, Electronic</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>285</td>
+                                <td>
+                                    <button class="btn btn-small view-details-btn" data-pickup-id="PCK-2023-1053">View</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Collector Addresses Section -->
+            <section class="dashboard-section" id="collectorAddresses">
+                <h2 style="margin-bottom: 1.5rem;">My Addresses</h2>
+                
+                <div class="addresses-container">
+                    <div class="addresses-header">
+                        <h3>Service Areas</h3>
+                        <button class="btn btn-small">Add New Address</button>
+                    </div>
+                    <div class="addresses-grid">
+                        <div class="address-card">
+                            <div class="address-type">Home</div>
+                            <div class="address-text">123 Green Street, Eco City, Bangalore 560001</div>
+                            <div class="address-actions">
+                                <button class="btn btn-small">Edit</button>
+                                <button class="btn btn-small btn-danger">Remove</button>
+                            </div>
+                        </div>
+                        
+                        <div class="address-card">
+                            <div class="address-type">Work</div>
+                            <div class="address-text">45 Tech Park, IT City, Bangalore 560078</div>
+                            <div class="address-actions">
+                                <button class="btn btn-small">Edit</button>
+                                <button class="btn btn-small btn-danger">Remove</button>
+                            </div>
+                        </div>
+                        
+                        <div class="address-card">
+                            <div class="address-type">Warehouse</div>
+                            <div class="address-text">78 Industrial Area, Peenya, Bangalore 560058</div>
+                            <div class="address-actions">
+                                <button class="btn btn-small">Edit</button>
+                                <button class="btn btn-small btn-danger">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collector Fare Calculator Section -->
+            <section class="dashboard-section" id="collectorFare">
+                <h2 style="margin-bottom: 1.5rem;">Fare Calculator</h2>
+                
+                <div class="fare-calculator">
+                    <div class="fare-calculator-header">
+                        <h3>Calculate Your Pickup Fare</h3>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">Enter distance and waste details to calculate the fare</p>
+                    </div>
+                    
+                    <div class="fare-calculator-content">
+                        <div class="fare-input-group">
+                            <label for="distance">Distance (km)</label>
+                            <input type="number" id="distance" min="0" step="0.1" placeholder="Enter distance in kilometers">
+                        </div>
+                        
+                        <div class="fare-input-group">
+                            <label for="wasteType">Waste Type</label>
+                            <select id="wasteType">
+                                <option value="">Select waste type</option>
+                                <option value="plastic">Plastic</option>
+                                <option value="paper">Paper</option>
+                                <option value="glass">Glass</option>
+                                <option value="metal">Metal</option>
+                                <option value="electronic">Electronic</option>
+                                <option value="batteries">Batteries</option>
+                                <option value="textiles">Textiles</option>
+                                <option value="mixed">Mixed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="fare-input-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" min="0" step="0.1" placeholder="Enter weight in kilograms">
+                        </div>
+                        
+                        <button class="btn" id="calculateFareBtn">Calculate Fare</button>
+                        
+                        <div class="fare-result" id="fareResult" style="display: none;">
+                            <div class="fare-result-row">
+                                <span>Base Fare:</span>
+                                <span id="baseFare">₹0.00</span>
+                            </div>
+                            <div class="fare-result-row">
+                                <span>Distance Fare:</span>
+                                <span id="distanceFare">₹0.00</span>
+                            </div>
+                            <div class="fare-result-row">
+                                <span>Weight Fare:</span>
+                                <span id="weightFare">₹0.00</span>
+                            </div>
+                            <div class="fare-result-row">
+                                <span>Waste Type Bonus:</span>
+                                <span id="wasteBonus">₹0.00</span>
+                            </div>
+                            <div class="fare-result-row total">
+                                <span>Total Fare:</span>
+                                <span id="totalFare">₹0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collector Time Estimation Section -->
+            <section class="dashboard-section" id="collectorTime">
+                <h2 style="margin-bottom: 1.5rem;">Time Estimation</h2>
+                
+                <div class="time-estimation">
+                    <div class="time-estimation-header">
+                        <h3>Estimate Your Travel Time</h3>
+                        <p style="color: var(--text-light); margin-top: 0.5rem;">Calculate how long it will take to reach the customer's location</p>
+                    </div>
+                    
+                    <div class="time-estimation-content">
+                        <div class="time-input-group">
+                            <label for="currentLocation">Current Location</label>
+                            <input type="text" id="currentLocation" placeholder="Enter your current location">
+                        </div>
+                        
+                        <div class="time-input-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" placeholder="Enter customer's location">
+                        </div>
+                        
+                        <div class="time-input-group">
+                            <label for="traffic">Traffic Conditions</label>
+                            <select id="traffic">
+                                <option value="low">Low Traffic</option>
+                                <option value="moderate" selected>Moderate Traffic</option>
+                                <option value="high">High Traffic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn" id="calculateTimeBtn">Calculate Time</button>
+                        
+                        <div class="time-result" id="timeResult" style="display: none;">
+                            <div class="time-result-value" id="timeResultValue">0 min</div>
+                            <p>Estimated travel time to reach the destination</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collector Profile Section -->
+            <section class="dashboard-section" id="collectorProfile">
+                <h2 style="margin-bottom: 1.5rem;">Collector Profile</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Personal Information</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                            <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--primary-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; margin-right: 1.5rem;">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div>
+                                <h3 id="collectorProfileFullName">Collector Name</h3>
+                                <p style="color: var(--text-light);" id="collectorProfileFullEmail">collector@example.com</p>
+                                <p style="color: var(--text-light);" id="collectorProfileFullPhone">+91 (555) 987-6543</p>
+                                <div class="collector-rating">
+                                    <div class="stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span>4.5 (128 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">Vehicle Type</h4>
+                                <p>Truck - Medium Capacity</p>
+                            </div>
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">License Number</h4>
+                                <p>KA-01-AB-1234</p>
+                            </div>
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">Service Area</h4>
+                                <p>Bangalore Urban</p>
+                            </div>
+                            <div style="padding: 1rem; background-color: var(--neutral-gray); border-radius: 8px;">
+                                <h4 style="margin-bottom: 0.5rem;">Member Since</h4>
+                                <p>Jan 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collector Settings Section -->
+            <section class="dashboard-section" id="collectorSettings">
+                <h2 style="margin-bottom: 1.5rem;">Settings</h2>
+                
+                <div class="records-container">
+                    <div class="records-header">
+                        <h3>Account Settings</h3>
+                    </div>
+                    <div style="padding: 1.5rem;">
+                        <form class="settings-form" id="collectorSettingsForm">
+                            <div class="form-group">
+                                <label for="collectorSettingsEmail">Email Address</label>
+                                <input type="email" id="collectorSettingsEmail" value="collector@example.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="collectorSettingsCurrentPassword">Current Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="collectorSettingsCurrentPassword" placeholder="Enter current password">
+                                    <button type="button" class="password-toggle" data-target="collectorSettingsCurrentPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="collectorSettingsNewPassword">New Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="collectorSettingsNewPassword" placeholder="Enter new password">
+                                    <button type="button" class="password-toggle" data-target="collectorSettingsNewPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="collectorSettingsConfirmPassword">Confirm New Password</label>
+                                <div class="password-container">
+                                    <input type="password" id="collectorSettingsConfirmPassword" placeholder="Confirm new password">
+                                    <button type="button" class="password-toggle" data-target="collectorSettingsConfirmPassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn">Save Changes</button>
+                                <button type="button" class="btn btn-secondary" id="collectorCancelSettingsBtn">Cancel</button>
+                            </div>
+                        </form>
+                        
+                        <div style="margin-top: 2rem;">
+                            <h4 style="margin-bottom: 1rem;">Notification Settings</h4>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #eee;">
+                                <span>New Pickup Requests</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="collectorEmailNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #eee;">
+                                <span>Pickup Reminders</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="collectorSmsNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #eee;">
+                                <span>Payment Notifications</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="collectorPaymentNotifications" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Cancel Pickup Modal -->
+    <div class="cancel-pickup-modal" id="cancelPickupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cancel Pickup</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please select a reason for cancellation:</p>
+                <div class="reason-options">
+                    <div class="reason-option">
+                        <input type="radio" id="reason1" name="cancelReason" value="Vehicle breakdown">
+                        <label for="reason1">Vehicle breakdown</label>
+                    </div>
+                    <div class="reason-option">
+                        <input type="radio" id="reason2" name="cancelReason" value="Traffic congestion">
+                        <label for="reason2">Traffic congestion</label>
+                    </div>
+                    <div class="reason-option">
+                        <input type="radio" id="reason3" name="cancelReason" value="Personal emergency">
+                        <label for="reason3">Personal emergency</label>
+                    </div>
+                    <div class="reason-option">
+                        <input type="radio" id="reason4" name="cancelReason" value="Customer not available">
+                        <label for="reason4">Customer not available</label>
+                    </div>
+                    <div class="reason-option">
+                        <input type="radio" id="reason5" name="cancelReason" value="Weather conditions">
+                        <label for="reason5">Weather conditions</label>
+                    </div>
+                    <div class="reason-option">
+                        <input type="radio" id="reasonOther" name="cancelReason" value="other">
+                        <label for="reasonOther">Other</label>
+                    </div>
+                </div>
+                <div class="other-reason" id="otherReasonContainer" style="display: none;">
+                    <label for="otherReasonText">Please specify:</label>
+                    <textarea id="otherReasonText" placeholder="Enter reason for cancellation..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                <button class="btn btn-danger" id="confirmCancelBtn">Confirm Cancellation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pickup Details Modal -->
+    <div class="pickup-details-modal" id="pickupDetailsModal">
+        <div class="pickup-details-content">
+            <div class="pickup-details-header">
+                <h3>Pickup Details</h3>
+                <button class="modal-close" id="pickupDetailsModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="pickup-details-body">
+                <div class="detail-section">
+                    <h4>Pickup Information</h4>
+                    <div class="detail-row">
+                        <strong>Pickup ID:</strong>
+                        <span id="detailPickupId">#PCK-2023-1056</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="detailStatus"><span class="status-badge status-pending">Pending</span></span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Scheduled Date:</strong>
+                        <span id="detailDate">October 16, 2023</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Scheduled Time:</strong>
+                        <span id="detailTime">10:30 AM</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Customer Information</h4>
+                    <div class="detail-row">
+                        <strong>Name:</strong>
+                        <span id="detailCustomerName">Rajesh Kumar</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Phone:</strong>
+                        <span id="detailCustomerPhone">+91 98765 43210</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Email:</strong>
+                        <span id="detailCustomerEmail">rajesh@example.com</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Pickup Address</h4>
+                    <div class="detail-row">
+                        <strong>Address:</strong>
+                        <span id="detailAddress">45 Park Avenue, Green Hills, Bangalore 560001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Landmark:</strong>
+                        <span id="detailLandmark">Near City Mall</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Waste Details</h4>
+                    <div class="waste-items">
+                        <div class="waste-item">
+                            <span>Plastic</span>
+                            <span>5.0 kg</span>
+                        </div>
+                        <div class="waste-item">
+                            <span>Paper</span>
+                            <span>3.5 kg</span>
+                        </div>
+                    </div>
+                    <div class="detail-row" style="margin-top: 0.5rem;">
+                        <strong>Total Weight:</strong>
+                        <span id="detailTotalWeight">8.5 kg</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section">
+                    <h4>Payment Information</h4>
+                    <div class="detail-row">
+                        <strong>Base Fare:</strong>
+                        <span id="detailBaseFare">₹50.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Distance Fare:</strong>
+                        <span id="detailDistanceFare">₹60.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Weight Fare:</strong>
+                        <span id="detailWeightFare">₹40.00</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Waste Type Bonus:</strong>
+                        <span id="detailWasteBonus">₹30.00</span>
+                    </div>
+                    <div class="detail-row" style="font-weight: 600; font-size: 1.1rem; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid #eee;">
+                        <strong>Total Fare:</strong>
+                        <span id="detailTotalFare" style="color: var(--primary-green);">₹180.00</span>
+                    </div>
+                </div>
+                
+                <div class="detail-section" id="cancellationSection" style="display: none;">
+                    <h4>Cancellation Information</h4>
+                    <div class="detail-row">
+                        <strong>Cancelled On:</strong>
+                        <span id="detailCancelledOn">October 16, 2023, 9:15 AM</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Reason:</strong>
+                        <span id="detailCancellationReason">Vehicle breakdown</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closePickupDetailsBtn">Close</button>
+                <button class="btn btn-danger" id="cancelFromDetailsBtn" style="display: none;">Cancel Pickup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="toast-icon fas fa-check-circle"></i>
+        <span class="toast-message">Action completed successfully!</span>
+    </div>
+
+    <script src="scripts/collector-dashboard.js"></script>
+</body>
+</html>
